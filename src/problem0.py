@@ -264,7 +264,7 @@ def problem0b(n):
            since there are 46 primes between 2 and 200.
      """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ###########################################################################
@@ -273,7 +273,11 @@ def problem0b(n):
     #    **  use (call) the   is_prime   function that is DEFINED ABOVE.
     ###########################################################################
     # ------------------------------------------------------------------
-
+    total = 0
+    for k in range (2, n+1):
+        if is_prime(k) == True:
+            total = total + 1
+    return total
 
 def run_test_problem0c():
     """ Tests the   problem0c  function. """
@@ -332,7 +336,7 @@ def problem0c(circle, n, window):
       :type window: rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ###########################################################################
@@ -340,6 +344,17 @@ def problem0c(circle, n, window):
     #   renders with a half-second pause after rendering.
     ###########################################################################
     # -------------------------------------------------------------------------
+    circle.attach_to(window)
+    window.render(.5)
+    radius = circle.radius
+    centerx = circle.center.x + radius * 2
+    centery = circle.center.y
+    for k in range(n):
+        point = rg.Point(centerx,centery)
+        circle2 = rg.Circle(point, radius)
+        circle2.attach_to(window)
+        window.render(0.5)
+        centerx = circle2.center.x + radius * 2
 
 
 ###############################################################################
