@@ -3,8 +3,8 @@ PRACTICE Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Montgomery Winslow.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -96,6 +96,14 @@ def run_test_problem3a():
     print('Test 4 expected:', expected)
     print('       actual:  ', answer)
 
+    #Test 5
+    point = rg.Point(50, 100)
+    expected = 16
+    answer = problem3a(window3, point, 4)
+    print()
+    print('Test 5 expected:', expected)
+    print('       actual:  ', answer)
+
     window3.close_on_mouse_click()
 
     # -------------------------------------------------------------------------
@@ -136,9 +144,10 @@ def problem3a(window, point, n):
         :type window: rg.RoseWindow
         :type point:  rg.Point
         :type n:      int
+
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -146,8 +155,23 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # -------------------------------------------------------------------------
+    total = 0
+    linex = point.x - 20
+    liney = point.y - 10
+    thick = 1
+    for k in range(n):
+        linex = linex + 20
+        liney = liney + 10
+        line = rg.Line(rg.Point(linex, liney), rg.Point(linex, liney + 50))
+        line.thickness = thick
+        thick = thick + 2
+        if line.thickness > 13:
+            line.thickness = 13
+        total = total + line.thickness
+        line.attach_to(window)
+        window.render()
 
-
+    return total
 def run_test_problem3b():
     """ Tests the   problem3b   function. """
     # Test 1 is ALREADY DONE (here).
