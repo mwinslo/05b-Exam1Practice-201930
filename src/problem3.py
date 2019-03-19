@@ -38,7 +38,7 @@ def main():
 def run_test_problem3a():
     """ Tests the   problem3a   function. """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  problem1a  function defined below.
     #   Include at least **   5   ** tests (we wrote four for you).
     # -------------------------------------------------------------------------
@@ -169,7 +169,7 @@ def problem3a(window, point, n):
             line.thickness = 13
         total = total + line.thickness
         line.attach_to(window)
-        window.render()
+    window.render()
 
     return total
 def run_test_problem3b():
@@ -239,7 +239,12 @@ def problem3b(m, point1):
     #    DIFFICULTY:      8 or 9
     #    TIME ESTIMATE:   20 to 30 minutes.
     # -------------------------------------------------------------------------
-
+    window = rg.RoseWindow(400, 650)
+    maxtotal = 0
+    for k in range(m):
+        maxtotal = maxtotal + problem3a(window, rg.Point(point1.x, point1.y + 60 * k), 3 + 2 * k )
+    window.close_on_mouse_click()
+    return maxtotal
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
